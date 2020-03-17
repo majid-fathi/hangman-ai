@@ -166,13 +166,4 @@ def play_hangman():
         print("\n\nfailed")
         return False
 
-
-failed = 0
-success = 0
-for i in range(100):
-    if play_hangman():
-        success += 1
-    else:
-        failed += 1
-
-print(success / failed + success)
+play_hangman()
