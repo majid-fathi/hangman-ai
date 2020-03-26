@@ -29,10 +29,6 @@ def load_words():
 words_dict = load_words()
 
 
-# Run get_word() within your program to generate a random secret word
-# by using a line like this within your program:
-# secret_word = get_word()
-
 def get_word():
     """
     Returns a random word from the word list
@@ -111,8 +107,11 @@ def random_letter():
                 possible_letters.append(letter)
 
     print("possible letters: " + str(possible_letters))
-    letter = random.choice(possible_letters)
+    for letter in ['a', 'e', 'i', 'o', 'u']:
+        if letter in possible_letters:
+            return letter
 
+    letter = random.choice(possible_letters)
     return letter
 
 
@@ -159,11 +158,14 @@ def play_hangman():
         hangman_lib.print_hangman_image(mistakes_made)
         turn += 1
 
+    print("\n\n\n")
+    print_guessed()
     if word_guessed():
-        print("\n\n*GG WP word guessed*")
+        print("*GG WP word guessed*")
         return True
     else:
-        print("\n\nfailed")
+        print("failed")
         return False
+
 
 play_hangman()
